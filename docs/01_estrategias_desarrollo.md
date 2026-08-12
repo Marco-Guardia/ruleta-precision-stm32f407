@@ -31,9 +31,6 @@ Cuando `R4` se desplaza más allá de PD7 (`R4 == 0x100`), se detecta con un
 - `LSLS` actualiza automáticamente las flags (Z, C), lo que permite
   además usar `BEQ`/`BNE` de forma económica en otras partes del código.
 
-*(Aquí puedes anexar tu boceto a mano o diagrama de cómo pensaste el
-patrón de bits antes de programarlo, si lo tienes.)*
-
 ## 2. Antirrebote (debouncing) del pulsador
 
 **Problema:** un pulsador mecánico, al presionarse o soltarse, no cambia
