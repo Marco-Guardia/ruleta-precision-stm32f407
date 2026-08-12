@@ -1,7 +1,7 @@
 /*=========================================================
     RULETA DE PRECISION (Tiro al Blanco Visual)
     STM32F407 - Nucleo ARM Cortex-M4
-    STM32F407VG Discovery
+    STM32F407VET6
 
     Firmware bare-metal: acceso directo a registros de
     memoria, sin HAL/SPL/CMSIS-Driver.

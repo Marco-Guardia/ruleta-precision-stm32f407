@@ -2,7 +2,7 @@
 
 Firmware **bare-metal** en ensamblador ARM Thumb-2 para el
 microcontrolador **STM32F407** (núcleo ARM Cortex-M4), desarrollado
-sobre la tarjeta **STM32F407VG Discovery**.
+sobre la tarjeta **STM32F407VET6**.
 
 ## Descripción funcional
 
@@ -31,7 +31,7 @@ El usuario debe presionar un pulsador (PA0) en el instante en que el LED
 | Elemento | Detalle |
 |---|---|
 | Microcontrolador | STM32F407 (Cortex-M4) |
-| Placa | STM32F407VG Discovery |
+| Placa | STM32F407VET6 |
 | Salidas | 8 LEDs discretos en PD0–PD7 |
 | Entrada | 1 pulsador N.O. en PA0 (pull-down interno) |
 
@@ -53,6 +53,14 @@ El usuario debe presionar un pulsador (PA0) en el instante en que el LED
     └── img/
         └── diagrama_conexiones.png    <- ⬅ PENDIENTE: sube aquí tu esquemático
 ```
+
+## Video de funcionamiento
+
+<video src="docs/media/funcionamiento.mp4" controls width="500"></video>
+
+*(Si el reproductor no aparece al ver este README en GitHub, abre
+directamente [`docs/media/funcionamiento.mp4`](./docs/media/funcionamiento.mp4)
+— GitHub lo reproduce igual al entrar al archivo.)*
 
 ## Documentación técnica
 

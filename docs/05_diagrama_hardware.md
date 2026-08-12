@@ -47,25 +47,6 @@ flowchart LR
     PA0 -.->|"cableado interno\nde fábrica"| KUP["Botón K-UP"]
 ```
 
-## Espacio para el diagrama de conexiones (esquemático)
+## Diagrama de conexiones
 
-Sube aquí tu diagrama de conexiones eléctricas (Fritzing, KiCad, a mano
-escaneado, etc.). Guarda la imagen en:
-
-```
-docs/img/diagrama_conexiones.png
-```
-
-y luego reemplaza esta línea por la imagen, así:
-
-```markdown
-![Diagrama de conexiones](img/diagrama_conexiones.png)
-```
-
-<!-- ⬇️ PENDIENTE: reemplazar este bloque una vez subas tu imagen ⬇️ -->
-
-> 🔲 **Espacio reservado — diagrama de conexiones aún no subido.**
-> Coloca el archivo de imagen en `docs/img/diagrama_conexiones.png` y
-> descomenta/edita la línea de arriba para mostrarlo en este documento.
-
-<!-- ⬆️ ------------------------------------------------------------ ⬆️ -->
+![Diagrama de conexiones](img/diagrama_conexiones.svg)
