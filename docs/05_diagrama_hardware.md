@@ -18,13 +18,22 @@ controlado directamente por PD0–PD7.
 | LED 6 | PD5 | Salida | → C6 de la matriz |
 | LED 7 | PD6 | Salida | → C7 de la matriz |
 | LED 8 | PD7 | Salida | → C8 de la matriz |
-| — | Fila R8 de la matriz | — | Resistencia limitadora → GND (fila común de retorno) |
+| — | Fila R8 de la matriz | — | Resistencia de **33 Ω** → GND (fila común de retorno) |
 | Pulsador (N.O.) | PA0 | Entrada, pull-down interno | Ya cableado internamente en la placa al botón **K-UP**; solo se requiere configurar el pull-down por software |
 
 > **Nota:** el pin **PA0 ya está cableado internamente al botón K-UP**.
 > No es necesario cablear ningún pulsador externo: basta con configurar
 > PA0 como entrada con **pull-down interno** para que el botón funcione
 > correctamente (activo en alto al presionarlo).
+
+## Pinout físico de la matriz LED 8x8
+
+Distribución real de pines del encapsulado de la matriz (vista frontal),
+usada para identificar físicamente cuáles pines corresponden a las
+columnas C1–C8 y a la fila R8, y el esquema interno de los LEDs por
+fila/columna:
+
+![Pinout físico de la matriz LED 8x8](img/matriz_pinout.jpeg)
 
 ## Diagrama de bloques (texto)
 
@@ -42,7 +51,7 @@ flowchart LR
 
     PD0P7 -->|"PD0->C1 ... PD7->C8"| C1_8
     C1_8 --- R8
-    R8 -->|"Resistencia limitadora"| GND1[GND]
+    R8 -->|"Resistencia 33 ohm"| GND1[GND]
 
     PA0 -.->|"cableado interno\nde fábrica"| KUP["Botón K-UP"]
 ```
