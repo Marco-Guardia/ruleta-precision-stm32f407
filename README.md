@@ -47,11 +47,12 @@ El usuario debe presionar un pulsador (PA0) en el instante en que el LED
     ├── 02_calculos_temporizacion.md   <- cálculo del valor de recarga SysTick
     ├── 03_registro_configuraciones.md <- tabla de registros modificados
     ├── 04_diagrama_flujo.md           <- diagrama de flujo (Mermaid)
-    ├── 05_diagrama_hardware.md        <- pines usados + espacio para el
-    │                                     diagrama de conexiones
+    ├── 05_diagrama_hardware.md        <- pines usados + diagrama de conexiones
     ├── 06_prompts_ia.md               <- prompts usados con IA durante el desarrollo
-    └── img/
-        └── diagrama_conexiones.png    <- ⬅ PENDIENTE: sube aquí tu esquemático
+    ├── img/
+    │   └── diagrama_conexiones.svg    <- esquemático de conexiones
+    └── media/
+        └── funcionamiento.mp4         <- video del sistema en funcionamiento
 ```
 
 ## Video de funcionamiento
@@ -82,8 +83,8 @@ arm-none-eabi-ld ruleta_precision.o -o ruleta_precision.elf
 ```
 
 (O bien, importar `src/ruleta_precision.s` directamente en un proyecto
-de STM32CubeIDE / Eclipse y compilar desde ahí.)
+de STM32CubeIDE / Segger Embedded Studio y compilar desde ahí.)
 
 ## Autor
 
-_(agrega tu nombre y el de tu equipo aquí)_
+Marco Aurelio Guardia Medrano
