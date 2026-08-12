@@ -21,9 +21,8 @@ controlado directamente por PD0–PD7.
 | — | Fila R8 de la matriz | — | Resistencia limitadora → GND (fila común de retorno) |
 | Pulsador (N.O.) | PA0 | Entrada, pull-down interno | Ya cableado internamente en la placa al botón **K-UP**; solo se requiere configurar el pull-down por software |
 
-> **Nota:** en la STM32F407VG Discovery, el pin **PA0 ya está cableado
-> internamente al botón K-UP** (el "USER button" azul de la placa). No
-> es necesario cablear ningún pulsador externo: basta con configurar
+> **Nota:** el pin **PA0 ya está cableado internamente al botón K-UP**.
+> No es necesario cablear ningún pulsador externo: basta con configurar
 > PA0 como entrada con **pull-down interno** para que el botón funcione
 > correctamente (activo en alto al presionarlo).
 
@@ -45,7 +44,7 @@ flowchart LR
     C1_8 --- R8
     R8 -->|"Resistencia limitadora"| GND1[GND]
 
-    PA0 -.->|"cableado interno\nde fábrica"| KUP["Botón K-UP\n(USER button)"]
+    PA0 -.->|"cableado interno\nde fábrica"| KUP["Botón K-UP"]
 ```
 
 ## Espacio para el diagrama de conexiones (esquemático)
