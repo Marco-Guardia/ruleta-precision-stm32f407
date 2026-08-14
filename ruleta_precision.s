@@ -1,21 +1,3 @@
-/*=========================================================
-    RULETA DE PRECISION (Tiro al Blanco Visual)
-    STM32F407 - Nucleo ARM Cortex-M4
-    STM32F407VET6
-
-    Firmware bare-metal: acceso directo a registros de
-    memoria, sin HAL/SPL/CMSIS-Driver.
-
-    Funcionamiento resumido:
-      1. Un LED recorre PD0..PD7 encendiendose uno a la vez.
-      2. El usuario presiona el boton (PA0) intentando
-         acertar el instante en que el LED objetivo (PD3)
-         esta encendido.
-      3. Acierto  -> el LED objetivo parpadea 3 veces.
-      4. Fallo    -> el sistema se congela 2 s mostrando el
-         LED erroneo y reinicia el barrido.
-=========================================================*/
-
 .global _start
 .syntax unified
 .cpu cortex-m4
@@ -56,8 +38,7 @@
 _start:
 //GPIOA y GPIOD
 // Patron read-modify-write: se lee AHB1ENR, se activan
-// solo los bits necesarios con ORR (sin apagar otros
-// perifericos que pudieran estar habilitados) y se
+// solo los bits necesarios con ORR y se
 // escribe de vuelta.
     LDR R0, =RCC_AHB1ENR
     LDR R1, [R0]
@@ -164,6 +145,7 @@ blink:
     erroneo que ya estaba encendido (R4) queda visible
     durante el retardo de 2 s. Luego reinicia el barrido.
 =======================================================*/
+
 failure:
     MOVW R0,#2000
     BL delay_ms
@@ -176,6 +158,7 @@ failure:
 /* software.                                      */
 /* Salida: R0=1 pulsacion valida, R0=0 no hubo    */
 /************************************************/
+
 button_pressed:
     // PUSH necesario: esta subrutina llama a delay_ms
     // (BL anidado), que sobrescribe LR y usa R1..R4.
@@ -190,6 +173,7 @@ button_pressed:
     // Filtro antirrebote: se espera 20 ms y se vuelve a
     // leer el pin. Si ya no esta en alto, fue ruido, no
     // una pulsacion real.
+
     MOVS R0,#20
     BL delay_ms
     LDR R2,[R1]                  // R1 sigue apuntando a GPIOA_IDR
@@ -200,6 +184,7 @@ button_pressed:
 // Pulsacion confirmada: espera a que el usuario suelte
 // el boton antes de retornar, para evitar que una sola
 // pulsacion larga cuente como varias.
+
 wait_release:
     LDR R2,[R1]
     ANDS R2,R2,#1
@@ -207,6 +192,7 @@ wait_release:
     BNE wait_release
     MOVS R0,#1
     POP {R1,R2,PC}                // POP ...,PC = return
+
 not_pressed:
     MOVS R0,#0
     POP {R1,R2,PC}
@@ -222,6 +208,7 @@ delay_ms:
     // etc.) sigue usando R1..R4 despues del BL; deben
     // quedar exactamente como estaban al entrar.
     PUSH {R1-R4,LR}
+
 delay_loop:
 /* 16000 ciclos = 1 ms @16 MHz */
 /* RVR = (f_CLK[Hz] * t[s]) - 1 = (16 000 000*0.001)-1 = 15999 */
@@ -234,10 +221,12 @@ delay_loop:
     LDR R1, =SYST_CSR
     MOVS R2,#5          /* ENABLE=1 CLKSOURCE=1 */
     STR R2,[R1]
+
 wait_flag:
     LDR R2,[R1]
     TST R2,#(1<<16)              // bit COUNTFLAG: 1 solo cuando llega a 0
     BEQ wait_flag
+
 //Apagamos el SysTick
     MOVS R2,#0
     STR R2,[R1]
